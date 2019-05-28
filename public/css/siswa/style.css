@@ -1,0 +1,43 @@
+/* NAVBAR */
+.navcontainer{
+    background-image: url('/img/library.jpg');
+    width : 1366px;
+    height: 270px;
+  }
+  
+  .navcontainer img{
+    height: 30px;
+    width: 150px;
+  }
+  
+  .navbar{
+    transition: 600ms ease;
+    background-color: transparent !important;
+    font-size: 22px;
+    -webkit-text-fill-color: white;
+    float: right;
+  }
+  
+  .navbar.scrolled{
+    background-color: #cb202d !important;
+  }
+  
+  .titlecontainer {
+      text-align: center;
+      padding-top: 8%;
+      color: white;
+      text-shadow: 2px 2px #000;
+      font-size: 50%;
+  }
+  .content{
+    margin: 1% 1% 1% 1%;
+    padding: 1% 1% 1% 1%;
+  }
+  .row{
+    margin: 1% 1% 1% 1%;
+    padding: 1% 1% 1% 1%;
+  }
+  img{
+    width: 20%;
+  }
+  

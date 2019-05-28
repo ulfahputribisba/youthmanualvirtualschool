@@ -1,0 +1,31 @@
+/* NAVBAR */
+.navcontainer{
+    background-image: url('/img/library.jpg');
+    width : 1366px;
+    height: 653px;
+  }
+  
+  .navcontainer img{
+    height: 40px;
+    width: 180px;
+  }
+  
+  .navbar{
+    transition: 600ms ease;
+    background-color: transparent !important;
+    font-size: 22px;
+    -webkit-text-fill-color: white;
+    float: right;
+  }
+  
+  .navbar.scrolled{
+    background-color: #cb202d !important;
+  }
+  
+  .titlecontainer {
+      text-align: center;
+      padding-top: 230px;
+      color: white;
+      text-shadow: 2px 2px #000;
+  }
+  
