@@ -66,17 +66,18 @@
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
                           <table>
-                              @foreach($gurus as $g)
+                          @if( Auth::check() )
                               <tr>
                                   <td>Nama Lengkap</td>
-                                  <td>{{ $g->name }}</td>
+                                  <td>Current user: {{ Auth::user()->name }}</td>
+                              </td>
                               <tr>
                                   <td>Email</td>
-                                  <td>{{ $g->email }}</td>
+                                  <td>Current user: {{ Auth::user()->email }}</td>
                               </tr>
-                              @endforeach
+                      @endif
                           </table>
-                          <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="/guru/edit_bio/{{ $g->id }}">Sunting</a>
+                          
                         </div>
                         <div class="col-sm-3"></div>
                       </div>
