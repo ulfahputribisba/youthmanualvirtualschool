@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,7 +11,7 @@ class GuruController extends Controller
 {
     public function index()
     {
-    	$gurus = DB::table('gurus')->get();
+    	$gurus = Auth::id();
     	return view('guru/index',['gurus' => $gurus]);
  
     }
