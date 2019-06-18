@@ -39,15 +39,15 @@
                     $rowCount = 0;
                 ?>
                 <div class="card-deck">
-                    @foreach ($mapel as $m)
+                    @foreach ($mapels as $m)
                         <div class="card">
                             <img src="" alt="" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $m->nama_pelajaran }}</h5>
-                                <p class="card-text">Durasi Belajar : {{ $m->durasi_pelajaran }}</p>
+                                <h5 class="card-title">{{ $m->judul_mapel }}</h5>
+                                <p class="card-text">Durasi Belajar : {{ $m->durasi }}</p>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="text-right btn btn-success follow" href="">Ikuti Pelajaran</a>
+                                <a type="button" class="text-right btn btn-info" href="/mapel/index/{{ $m->id }}">Lihat selengkapnya</a>
                             </div>
                         </div>
                         <?php
@@ -58,36 +58,14 @@
                         ?>
                     @endforeach
                 </div>
+                Halaman : {{ $mapels->currentPage() }} <br/>
+                Jumlah Data : {{ $mapels->total() }} <br/>
+                Data Per Halaman : {{ $mapels->perPage() }} <br/>          
+                {{ $mapels->links() }}
             </div>
         </section>
         <section class="following">
-        <!-- <div class="container">
-                <h2>Pelajaran yang Diikuti</h2>
-                <?php
-                    $numOfCols = 3;
-                    $rowCount = 0;
-                ?>
-                <div class="card-deck">
-                    @foreach ($mapel as $m)
-                        <div class="card">
-                            <img src="" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $m->nama_pelajaran }}</h5>
-                                <p class="card-text">Durasi Belajar : {{ $m->durasi_pelajaran }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <button type="button" class="text-right btn btn-success follow" href="">Ikuti Pelajaran</a>
-                            </div>
-                        </div>
-                        <?php
-                            $rowCount++;
-                            if($rowCount % $numOfCols == 0){
-                                echo '</div><br><div class="card-deck">';
-                            }
-                        ?>
-                    @endforeach
-                </div>
-            </div> -->
+        
         </section>
     </div>
 
@@ -98,21 +76,6 @@
       $(window).scroll(function(){
        $('nav').toggleClass('scrolled', $(this).scrollTop() > 30);
       });
-
-      $(".follow").click(function(){
-		$(this).text(function(i, v){
-		   return v === 'Pelajaran Diikuti' ? 'Ikuti Pelajaran' : 'Pelajaran Diikuti'
-		});
-        if($(this).hasClass("btn-success"))
-        {
-                $(this).addClass("btn-info");
-                $(this).removeClass("btn-success");
-        }
-        else{
-                $(this).addClass("btn-success");
-                $(this).removeClass("btn-info");
-        }
-        });
     </script>
   </body>
 </html>

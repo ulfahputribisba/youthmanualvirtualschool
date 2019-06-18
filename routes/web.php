@@ -20,7 +20,10 @@ Route::get('/', function () {
 });
 
 // GURU
-Route::get('/guru', 'GuruController@index')->name('pageGuru');
+Route::get('/guru/{guru}',[ 
+    'as'   => 'show.guru.details',
+    'uses' => 'GuruController@index'
+]);
 
 Route::get('/guru/edit_bio/{id}','GuruController@edit_bio');
 Route::post('/guru/perbaharui_bio','GuruController@perbaharui_bio');
@@ -36,7 +39,9 @@ Route::get('/guru/hapus_mapel/{id}','GuruController@hapus_mapel');
 Route::get('/siswa', 'SiswaController@index')->name('pageSiswa');
 
 //MAPEL
-Route::get('/rincian_mapel/{id}', 'MapelController@rincian_mapel');
+Route::get('/mapel/index/{id}', 'MapelController@index');
+// Route::get('following/{id}', 'FollowingController@following')->name('following');
+Route::get('mapel/{id}', 'MapelController@following')->name('following');
 
 // ------------------------------------------------------------
 

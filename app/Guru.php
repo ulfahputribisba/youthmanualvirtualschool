@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Guru extends Authenticatable
 {
     use Notifiable;
+
+    protected $table = 'gurus';
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +39,8 @@ class Guru extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRouteKeyName(){
+        return 'name';
+    }
 }

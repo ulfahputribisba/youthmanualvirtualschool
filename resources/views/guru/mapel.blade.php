@@ -70,7 +70,7 @@
                             <td>Durasi Belajar</td>
                             <td>Opsi</td>
                         </tr>
-                        @foreach($mapel as $m)
+                        @foreach($mapels as $m)
                         <tr>
                             <td>{{ $m->kode_mapel }}</td>
                             <td>{{ $m->nama_pelajaran }}</td>

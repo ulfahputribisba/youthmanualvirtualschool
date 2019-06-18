@@ -62,7 +62,7 @@
                         Sunting Mata Pelajaran
                     </div>
                     <div class="card-body">
-                        @foreach($mapel as $m)
+                        @foreach($mapels as $m)
                         <form action="/guru/perbaharui_mapel" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $m->id_pelajaran }}"><br>

@@ -18,7 +18,7 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0"><img src="{{ asset('/img/youthmanual-logo-3.png') }}"></a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="/">Keluar</a>
+          <a class="nav-link" href="#">Keluar</a>
         </li>
       </ul>
     </nav>
@@ -30,7 +30,7 @@
           <div class="sidebar-sticky">
           <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="/guru">
+                <a class="nav-link" href="#">
                   <span data-feather="home"></span>
                   Beranda
                 </a>
@@ -66,17 +66,17 @@
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
                           <table>
-                              @foreach($gurus as $g)
-                              <tr>
-                                  <td>Nama Lengkap</td>
-                                  <td>{{ $g->name }}</td>
-                              <tr>
-                                  <td>Email</td>
-                                  <td>{{ $g->email }}</td>
-                              </tr>
-                              @endforeach
+                          @foreach ($guru as $g)
+                            <tr>
+                              <td>Nama : </td>
+                              <td>{{ $g->name }}</td>
+                            </tr>
+                            <tr>
+                              <td>Email : </td>
+                              <td>{{ $g->email }}</td>
+                            </tr>
+                          @endforeach
                           </table>
-                          <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="/guru/edit_bio/{{ $g->id }}">Sunting</a>
                         </div>
                         <div class="col-sm-3"></div>
                       </div>

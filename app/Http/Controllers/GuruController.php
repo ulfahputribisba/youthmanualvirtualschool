@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-    	$gurus = DB::table('gurus')->get();
-    	return view('guru/index',['gurus' => $gurus]);
- 
+        $this->middleware('guest')->except('logout');
+    }
+
+    public function index(Guru $guru)
+    {
+        //dd($guru);
+        $guru = Guru::find($guru);
+        return view('guru/index', compact('guru'));
     }
     public function edit_bio($id)
     {
@@ -30,8 +37,8 @@ class GuruController extends Controller
     // MAPEL
     public function mapel()
     {
-    	$mapel = DB::table('mapel')->get();
-    	return view('guru/mapel',['mapel' => $mapel]);
+    	$mapels = DB::table('mapels')->get();
+    	return view('guru/mapel',['mapels' => $mapels]);
  
     }
     public function tambah_mapel()
@@ -40,33 +47,33 @@ class GuruController extends Controller
  
     }
     public function simpan_mapel(Request $request){
-        DB::table('mapel')->insert([
-            'kode_mapel' => $request->kode,
-            'nama_pelajaran' => $request->nama,
-            'durasi_pelajaran' => $request->durasi
+        DB::table('mapels')->insert([
+            'judul_mapel' => $request->nama,
+            'deskripsi_mapel' => $request->durasi,
+            'materi' => $request->materi,
+            'durasi' => $request->durasi
         ]);
         return redirect('/guru/mapel');
     }
     public function edit_mapel($id)
     {
-        $mapel = DB::table('mapel')->where('id_pelajaran',$id)->get();
-        return view('guru/edit_mapel',['mapel' => $mapel]);
+        $mapels = DB::table('mapels')->where('id',$id)->get();
+        return view('guru/edit_mapel',['mapels' => $mapels]);
     
     }
     public function perbaharui_mapel(Request $request){
-        DB::table('mapel')->where('id_pelajaran',$request->id)->update([
-            'kode_mapel' => $request->kode,
-            'nama_pelajaran' => $request->nama,
-            'durasi_pelajaran' => $request->durasi
+        DB::table('mapels')->where('id',$request->id)->update([
+            'judul_mapel' => $request->nama,
+            'deskripsi_mapel' => $request->durasi,
+            'materi' => $request->materi,
+            'durasi' => $request->durasi
         ]);
         return redirect('/guru/mapel');
     }
     public function hapus_mapel($id)
     {
-        DB::table('mapel')->where('id_pelajaran',$id)->delete();
+        DB::table('mapels')->where('id',$id)->delete();
         return redirect('/guru/mapel');
     }
-
-    //MATERI
     
 }

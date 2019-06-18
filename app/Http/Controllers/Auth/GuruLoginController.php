@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -48,10 +50,11 @@ class GuruLoginController extends Controller
         return redirect()->route('guru-login')->with('success','Pendaftaran Berhasil');
     }
 
-    public function login(Request $request)
+    public function login(Request $request, Guru $name)
     {
+        $gurus = DB::table('gurus')->where('name',$name)->get();
         if (auth()->guard('guru')->attempt(['email' => $request->email, 'password' => $request->password ])) {
-            return redirect()->route('pageGuru');
+            return redirect()->route('show.guru.details', $gurus);
         }
         else{
             return redirect()->route('guru-login')->with('fail','Pendaftaran Gagal');
