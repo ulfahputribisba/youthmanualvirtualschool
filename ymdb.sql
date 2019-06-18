@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2019 at 05:12 PM
+-- Generation Time: Jun 18, 2019 at 11:32 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `ymdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `follow_mapels`
+--
+
+CREATE TABLE `follow_mapels` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `siswa_id` int(11) NOT NULL,
+  `mapel_id` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -44,51 +59,58 @@ CREATE TABLE `gurus` (
 
 INSERT INTO `gurus` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Ulfah Putri Bisba', 'ulfahpb@email.com', '$2y$10$LulWABgyynu09V1JGydSIen4kxJAyC.2ZdlpbqXtGWBszAQnUn2R6', NULL, '2019-05-27 08:12:48', '2019-05-27 08:12:48'),
-(2, 'Gamas Ahmad Karim', 'gamasak@email.com', 'gamasak123', NULL, NULL, NULL);
+(3, 'Gamas', 'gamas@email.com', '$2y$10$9mRlxr5MJe0.dmH5A00XM.7NTrmeV.e3jeaQ00qsAFtXUxlKP0YsC', NULL, '2019-06-13 02:15:01', '2019-06-13 02:15:01'),
+(4, 'Putri', 'putri@email.com', '$2y$10$0JSZ8MvRk8nxPqtMfCj0kuWZzX8Ph0zqix7zs.TpLazj2o.a50Z9C', NULL, '2019-06-16 16:41:59', '2019-06-16 16:41:59');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentar`
+-- Table structure for table `mapels`
 --
 
-CREATE TABLE `komentar` (
-  `id_komen` int(10) NOT NULL,
-  `isi_komen` text NOT NULL,
-  `tgl_komen` datetime NOT NULL,
-  `id_siswa` int(10) NOT NULL,
-  `id_materi` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `mapels` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `judul_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi_mapel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `durasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mapels`
+--
+
+INSERT INTO `mapels` (`id`, `judul_mapel`, `deskripsi_mapel`, `materi`, `durasi`, `created_at`, `updated_at`) VALUES
+(1, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(2, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(3, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(4, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(5, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(6, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(7, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(8, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(9, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(10, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(11, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL),
+(12, 'Rekayasa Perangkat Lunak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis pulvinar enim. Nam rutrum facilisis urna ut pellentesque. Integer rutrum quis mi ac venenatis.', 'SDLC', '90 menit', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mapel`
+-- Table structure for table `mapel_comments`
 --
 
-CREATE TABLE `mapel` (
-  `id_pelajaran` int(10) NOT NULL,
-  `id_pengajar` int(10) NOT NULL,
-  `id_murid` int(10) NOT NULL,
-  `kode_mapel` varchar(20) NOT NULL,
-  `nama_pelajaran` varchar(100) NOT NULL,
-  `durasi_pelajaran` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mapel`
---
-
-INSERT INTO `mapel` (`id_pelajaran`, `id_pengajar`, `id_murid`, `kode_mapel`, `nama_pelajaran`, `durasi_pelajaran`) VALUES
-(1, 1, 1, 'DM032', 'Data Mining', '90 menit'),
-(3, 1, 2, ' ET2000', 'Medan Elektromagnetik 1', '50 menit'),
-(4, 2, 2, 'JAR785', 'Cyber Computer Security', '30 menit'),
-(5, 2, 1, 'PBO5335', ' Pemrograman Berorientasi Objek', '45 menit'),
-(6, 1, 2, 'PWK3453', 'Kapita Selecta: Pengenalan Profesi Perencanaan Wilayah dan Kota', '40 menit'),
-(7, 2, 2, 'TA4114', 'Sumberdaya Energi Non-Konvensional', '40 menit'),
-(8, 2, 1, 'KOM3329', ' Sistem Komunikasi II (Sistem Komunikasi Digital)', '30 menit'),
-(9, 1, 2, 'MAN3489', 'Corporate Financial Management', '30 menit'),
-(10, 2, 1, 'BUS2938', ' Konsep Dan Strategi Electronic Business', '30 menit');
+CREATE TABLE `mapel_comments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `siswa_id` int(10) UNSIGNED NOT NULL,
+  `mapel_id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -101,6 +123,15 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2019_06_17_035244_create_mapels_table', 1),
+(2, '2019_06_17_211437_create_follow_mapels_table', 2),
+(3, '2019_06_18_035712_create_mapel_comments_table', 3);
 
 -- --------------------------------------------------------
 
@@ -131,23 +162,28 @@ INSERT INTO `siswas` (`id`, `name`, `email`, `password`, `remember_token`, `crea
 --
 
 --
+-- Indexes for table `follow_mapels`
+--
+ALTER TABLE `follow_mapels`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gurus`
 --
 ALTER TABLE `gurus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `komentar`
+-- Indexes for table `mapels`
 --
-ALTER TABLE `komentar`
-  ADD PRIMARY KEY (`id_komen`),
-  ADD UNIQUE KEY `id_siswa` (`id_siswa`,`id_materi`);
+ALTER TABLE `mapels`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mapel`
+-- Indexes for table `mapel_comments`
 --
-ALTER TABLE `mapel`
-  ADD PRIMARY KEY (`id_pelajaran`);
+ALTER TABLE `mapel_comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -166,28 +202,34 @@ ALTER TABLE `siswas`
 --
 
 --
+-- AUTO_INCREMENT for table `follow_mapels`
+--
+ALTER TABLE `follow_mapels`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `gurus`
 --
 ALTER TABLE `gurus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `komentar`
+-- AUTO_INCREMENT for table `mapels`
 --
-ALTER TABLE `komentar`
-  MODIFY `id_komen` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mapels`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `mapel`
+-- AUTO_INCREMENT for table `mapel_comments`
 --
-ALTER TABLE `mapel`
-  MODIFY `id_pelajaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `mapel_comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `siswas`
