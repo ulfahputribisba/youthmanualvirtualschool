@@ -11,6 +11,7 @@ class GuruController extends Controller
 {
     public function __construct()
     {
+<<<<<<< HEAD
         $this->middleware('guest')->except('logout');
     }
 
@@ -19,6 +20,11 @@ class GuruController extends Controller
         //dd($guru);
         $guru = Guru::find($guru);
         return view('guru/index', compact('guru'));
+=======
+    	$gurus = Auth::id();
+    	return view('guru/index',['gurus' => $gurus]);
+ 
+>>>>>>> f0e840361cf1f75f951e9a13d806b0d562222b2e
     }
     public function edit_bio($id)
     {

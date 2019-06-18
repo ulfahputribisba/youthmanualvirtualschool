@@ -66,6 +66,7 @@
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
                           <table>
+<<<<<<< HEAD
                           @foreach ($guru as $g)
                             <tr>
                               <td>Nama : </td>
@@ -77,6 +78,20 @@
                             </tr>
                           @endforeach
                           </table>
+=======
+                          @if( Auth::check() )
+                              <tr>
+                                  <td>Nama Lengkap</td>
+                                  <td>Current user: {{ Auth::user()->name }}</td>
+                              </td>
+                              <tr>
+                                  <td>Email</td>
+                                  <td>Current user: {{ Auth::user()->email }}</td>
+                              </tr>
+                      @endif
+                          </table>
+                          
+>>>>>>> f0e840361cf1f75f951e9a13d806b0d562222b2e
                         </div>
                         <div class="col-sm-3"></div>
                       </div>
